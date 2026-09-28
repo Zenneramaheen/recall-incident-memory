@@ -1,0 +1,11 @@
+{
+  "id": "SYNTHETIC-001",
+  "service": "checkout",
+  "environment": "demo",
+  "symptoms": "Checkout requests timed out after deployment. Database connection pool was saturated.",
+  "root_cause": "Release demo-v2 leaked database connections on the exception path.",
+  "successful_fix": "Rolled back demo-v2, then patched connection cleanup using a finally block.",
+  "failed_attempts": ["Restarting instances briefly improved latency, but the pool filled again."],
+  "verification": "Pool utilization returned below 50 percent and timeout errors stopped during a 15-minute observation window.",
+  "synthetic": true
+}

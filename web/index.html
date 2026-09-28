@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recall / Incident Memory</title><link rel="stylesheet" href="/app.css"><script src="/app.js" defer></script></head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="/" aria-label="Recall home"><span class="brand-icon">↺</span> recall<span class="brand-dot">.</span></a>
+  <div class="workspace-label">OPERATIONS WORKSPACE</div>
+  <nav aria-label="Main navigation"><button id="nav-investigate" class="nav-item active"><span>⌁</span> Investigate</button><button id="nav-learn" class="nav-item"><span>▤</span> Record resolution</button></nav>
+  <div class="side-note"><span class="tiny-dot"></span> Built with Hindsight<p>Every resolved incident is a lesson worth remembering.</p></div>
+  <div class="side-footer">LOCAL DEMO <span>v0.1</span></div>
+</aside>
+<main>
+  <header><div class="breadcrumb">Workspace <span>/</span> Incident memory</div><span class="pill">Human-led response</span></header>
+  <div class="content">
+    <div class="intro"><div><div class="eyebrow">LESS REPEATED WORK. MORE CONTEXT.</div><h1>Resolve with experience.</h1><p>Bring past incidents into your next investigation.</p></div><span class="demo-badge">◈ &nbsp; Synthetic demo</span></div>
+    <section class="bank-bar" aria-label="Memory bank settings"><div><label for="bank">MEMORY BANK</label><input id="bank" value="incident-demo-20260928-01" maxlength="80" pattern="[a-zA-Z0-9_-]+" aria-label="Memory bank"></div><button id="new-bank" class="secondary">＋ Fresh demo bank</button></section>
+    <p class="bank-hint">The existing bank contains our sample incident. Start a fresh bank to demonstrate before and after memory.</p>
+    <div class="flow"><span><b>01</b> Describe the alert</span><i>→</i><span><b>02</b> Recall experience</span><i>→</i><span><b>03</b> Verify the next step</span></div>
+    <section id="investigate-view">
+      <div class="grid">
+        <section class="card input-card"><div class="card-title"><h2>What’s happening?</h2><span class="small-label">NEW INVESTIGATION</span></div><p class="helper">Describe symptoms and recent changes. Memory adds context; it doesn’t confirm a root cause.</p>
+          <form id="investigate-form"><div class="field-row"><div><label for="service">Service</label><input id="service" value="checkout" maxlength="100" required></div><div><label for="environment">Environment</label><input id="environment" value="demo" maxlength="100" required></div></div><label for="alert">Alert details</label><textarea id="alert" rows="8" maxlength="20000" required placeholder="What failed? What changed? What have you tried?"></textarea><div class="input-footer"><button id="load-sample" type="button" class="text-button">↗ Load sample alert</button><span>Sent to Hindsight</span></div><button type="submit" class="primary full">Investigate with memory <span>→</span></button></form>
+        </section>
+        <section class="card evidence-card"><div class="card-title"><h2>Recalled evidence</h2><span id="evidence-count" class="count">—</span></div><p class="helper">Past experience retrieved for this service and environment.</p><div id="evidence"><div class="empty"><div class="orbit">◎</div><h3>A little history goes a long way.</h3><p>Run an investigation to see the facts<br>behind the recommendation.</p></div></div></section>
+      </div>
+      <section class="card recommendation-card"><div class="card-title"><h2><span class="accent">✧</span> Recommended next steps</h2><span id="result-label" class="small-label">AWAITING AN ALERT</span></div><div id="recommendation"><p class="placeholder">Your diagnostic plan will appear here, with hypotheses and evidence to verify.</p></div><details id="sources-panel" hidden><summary>Sources used in the recommendation</summary><div id="sources"></div></details><div class="result-footer">Suggestions only. Review current evidence before taking action.</div></section>
+    </section>
+    <section id="learn-view" hidden>
+      <section class="card resolution-card"><div class="card-title"><h2>Make the next incident easier.</h2><button id="load-resolution" class="text-button">Load sample resolution ↗</button></div><p class="helper">Save a confirmed outcome, including what didn’t work. Saving an existing incident ID replaces its earlier record.</p>
+        <form id="resolution-form"><div class="field-row triple"><div><label for="incident-id">Incident ID</label><input id="incident-id" required maxlength="100"></div><div><label for="resolved-service">Service</label><input id="resolved-service" required maxlength="100"></div><div><label for="resolved-environment">Environment</label><input id="resolved-environment" required maxlength="100"></div></div><label for="symptoms">Observed symptoms</label><textarea id="symptoms" rows="2" required maxlength="6000"></textarea><div class="field-row"><div><label for="root-cause">Confirmed root cause</label><textarea id="root-cause" rows="3" required maxlength="6000"></textarea></div><div><label for="successful-fix">Successful fix</label><textarea id="successful-fix" rows="3" required maxlength="6000"></textarea></div></div><label for="failed-attempts">Failed attempts <span class="muted">· one per line</span></label><textarea id="failed-attempts" rows="2" maxlength="6000"></textarea><label for="verification">How was recovery verified?</label><textarea id="verification" rows="2" required maxlength="6000"></textarea><label class="checkbox"><input id="synthetic" type="checkbox" checked> This is a synthetic example</label><label class="checkbox"><input id="confirmed" type="checkbox" required> I’ve reviewed the outcome and want to save it to this memory bank.</label><button class="primary" type="submit">Save resolution to memory <span>↗</span></button></form>
+      </section>
+    </section>
+    <div id="status" role="status" aria-live="polite" hidden></div>
+    <footer><span>RECALL / INCIDENT MEMORY COPILOT</span><span>Retain. Recall. Learn.</span></footer>
+  </div>
+</main>
+</body></html>

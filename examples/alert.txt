@@ -1,0 +1,1 @@
+The checkout service in the demo environment is timing out after a deployment. Database connection pool utilization is at 100 percent. Restarting one instance helped briefly, then errors returned. What should the on-call engineer check next?
